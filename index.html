@@ -11,6 +11,7 @@
   <link type="text/css" href="css/styles.css" rel="stylesheet">
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
+
   <!-- manifest -->
   <link rel="manifest" href="/manifest.json">
   <!-- IOS Support -->
@@ -50,46 +51,8 @@
   <!-- recipes -->
   <div class="recipes container grey-text text-darken-1">
     <h6 class="center">Changes Recipe</h6>
-    <div class="card-panel recipe white row">
-      <img src="img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
-      </div>
-      <div class="recipe-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
-    <div class="card-panel recipe white row">
-      <img src="img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
-      </div>
-      <div class="recipe-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
-    <div class="card-panel recipe white row">
-      <img src="img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
-      </div>
-      <div class="recipe-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
-    <div class="card-panel recipe white row">
-      <img src="img/dish.png" alt="recipe thumb">
-      <div class="recipe-details">
-        <div class="recipe-title">Edame Noodles</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
-      </div>
-      <div class="recipe-delete">
-        <i class="material-icons">delete_outline</i>
-      </div>
-    </div>
+
+  
   </div>
 
   <div class="center">
@@ -116,6 +79,27 @@
       </div>
     </form>
   </div>
+
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDckstS04I-6k8L1RO81oPsA1H5dHVMXKg",
+    authDomain: "pwa-test-a2dcb.firebaseapp.com",
+    databaseURL: "https://pwa-test-a2dcb.firebaseio.com",
+    projectId: "pwa-test-a2dcb",
+    storageBucket: "pwa-test-a2dcb.appspot.com",
+    messagingSenderId: "699537141833",
+    appId: "1:699537141833:web:6780d457ff0874d2"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
+<script src="/js/db.js"></script>
+
   <script src='/js/app.js'></script>
   <script src="js/ui.js"></script>
 </body>

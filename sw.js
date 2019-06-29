@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v3'
-const dynamicCacheName = 'site-dynamic-v4'
+const staticCacheName = 'site-static-v4'
+const dynamicCacheName = 'site-dynamic-v7'
 const assets = [
     '/',
     '/index.html',
@@ -26,6 +26,23 @@ self.addEventListener('install', evt => {
     // console.log('service  worker has been installed')
 })
 
+// Cache size limit function
+const limitCacheSize = (name, size) => {
+    caches.open(name).then(cache => {
+
+        cache.keys().then(keys => {
+
+
+            if(keys.length > size){
+                cache.delete(keys[0]).then(limitCacheSize(name,size))
+            }
+
+
+        })
+
+
+    })
+}
 
 self.addEventListener('activate', evt => {
     evt.waitUntil(
@@ -42,18 +59,21 @@ self.addEventListener('activate', evt => {
 
 
 self.addEventListener('fetch', evt => {
-    evt.respondWith(
-        caches.match(evt.request).then(cacheRes => {
-            return cacheRes || fetch(evt.request).then(fetchRes => {
-                return caches.open(dynamicCacheName).then(cache => {
-                    cache.put(evt.request.url,fetchRes.clone());
-                    return fetchRes
-                })
-            })
-        }).catch(e => {
-            if(evt.request.url.indexOf('.html') >= 0){
-                return caches.match('/pages/fallback.html')
-            }
-        })
-    )
+    // evt.respondWith(
+    //     caches.match(evt.request).then(cacheRes => {
+    //         return cacheRes || fetch(evt.request).then(fetchRes => {
+    //             return caches.open(dynamicCacheName).then(cache => {
+    //                 cache.put(evt.request.url,fetchRes.clone());
+
+    //                 //Limit Caching size here 
+    //                 limitCacheSize(dynamicCacheName,2)
+    //                 return fetchRes
+    //             })
+    //         })
+    //     }).catch(e => {
+    //         if(evt.request.url.indexOf('.html') >= 0){
+    //             return caches.match('/pages/fallback.html')
+    //         }
+    //     })
+    // )
 })
