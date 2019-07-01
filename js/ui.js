@@ -16,7 +16,8 @@ const renderRecipe = (data,id) => {
       <img src="img/dish.png" alt="recipe thumb">
       <div class="recipe-details">
         <div class="recipe-title">${data.title}</div>
-        <div class="recipe-ingredients">Edame Beans, Noodels, Garlic oil</div>
+        <div class="recipe-ingredients">${data.ingredients
+        }</div>
       </div>
       <div class="recipe-delete">
         <i class="material-icons" data-id="${id}>delete_outline</i>
