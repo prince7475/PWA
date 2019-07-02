@@ -15,18 +15,15 @@ db.enablePersistence()
 db.collection('recipes').onSnapshot((snapshot) => {
     // console.log('snapshot.docChanges', snapshot.docChanges())
     snapshot.docChanges().forEach(change => {
-        switch(change.type){
-            case 'added': 
-            // add the document to the web page
-            renderRecipe(change.doc.data(), change.doc.id)
-            case 'removed':
-            // remove the document data from the web page
+        if(change.type === 'added'){
+            renderRecipe(change.doc.data(), change.doc.id);
+          }
+          if(change.type === 'removed'){
             removeRecipe(change.doc.id)
-            default:
-                return null;
-        }
+            // remove the document data from the web page
+          }
+        });
     });
-})
 
 
 // Add new recipe 

@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // render recipe data 
 const renderRecipe = (data,id) => {
+  console.log(data)
   const html = `    <div class="card-panel recipe white row" data-id="${id}">
   <img src="/img/dish.png" alt="recipe thumb">
   <div class="recipe-details">
@@ -28,6 +29,8 @@ const renderRecipe = (data,id) => {
 
 //Remove recipe from DOM
 const removeRecipe = (id) => {
+  console.log(id)
   const recipe = document.querySelector(`.recipe[data-id=${id}]`);
+  console.log('recipe', recipe)
   recipe.remove();
 }
