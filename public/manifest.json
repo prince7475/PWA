@@ -1,10 +1,10 @@
 {
-    "name": "Food Ninja",
-    "short_name": "FoodNinja",
+    "name": "Lunch Chat",
+    "short_name": "Lunch Chat",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#FFE9D2",
-    "theme_color": "#FFE1C4",
+    "background_color": "#C7D9FF",
+    "theme_color": "#abbad8",
     "orientation": "portrait-primary",
     "icons": [
         {

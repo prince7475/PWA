@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-v8'
-const dynamicCacheName = 'site-dynamic-v8'
+const staticCacheName = 'site-static-v3'
+const dynamicCacheName = 'site-dynamic-v3'
 const assets = [
     '/',
     '/index.html',
@@ -16,6 +16,7 @@ const assets = [
 
 // Install service worker
 self.addEventListener('install', evt => {
+    console.log('Install event')
     evt.waitUntil(
         caches.open(staticCacheName).then((cache) => {
         console.log('Caching shell assets')
@@ -45,6 +46,7 @@ const limitCacheSize = (name, size) => {
 }
 
 self.addEventListener('activate', evt => {
+    console.log("activate Event")
     evt.waitUntil(
         caches.keys().then( keys => {
             // console.log(keys)
@@ -59,7 +61,7 @@ self.addEventListener('activate', evt => {
 
 
 self.addEventListener('fetch', evt => {
-
+    console.log("Fetch Event")
     if(evt.request.url.indexOf('firestore.googleapis.com') === -1 ){
     evt.respondWith(
         caches.match(evt.request).then(cacheRes => {
@@ -68,7 +70,7 @@ self.addEventListener('fetch', evt => {
                     cache.put(evt.request.url,fetchRes.clone());
 
                     //Limit Caching size here 
-                    limitCacheSize(dynamicCacheName,2)
+                    limitCacheSize(dynamicCacheName,10)
                     return fetchRes
                 })
             })
